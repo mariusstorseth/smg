@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <td>Office</td>
+      <td>Country</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @offices.each do |office| %>
+    <tr>
+      <td><%= link_to office.office_name, office_path(office) %></td>
+      <td><%= office.country %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605182815) do
+ActiveRecord::Schema.define(version: 20140605213059) do
 
   create_table "clients", force: true do |t|
     t.string   "client_name"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 20140605182815) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "gross_sale"
+    t.integer  "margin"
+    t.integer  "ads"
+    t.integer  "ads_margin"
+    t.integer  "ads_coverage_rate"
+    t.integer  "software_coverage_rate"
+    t.integer  "semi_coverage_rate"
+    t.integer  "production_coverage_rate"
+    t.integer  "other_coverage_rate"
   end
 
 end
