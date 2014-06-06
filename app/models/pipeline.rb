@@ -95,7 +95,12 @@ class Pipeline < ActiveRecord::Base
   end
 
   def calculate_weighted_values!
-    self.weighted_gross = gross_sale * probability / 100
-    self.weighted_margin = margin * probability / 100
+    if probability
+      self.weighted_gross = gross_sale * probability / 100
+      self.weighted_margin = margin * probability / 100
+    else
+      self.weighted_gross = 0
+      self.weighted_margin = 0
+    end
   end
 end
