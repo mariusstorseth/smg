@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140606113548) do
+ActiveRecord::Schema.define(version: 20140606135326) do
 
   create_table "clients", force: true do |t|
     t.string   "client_name"
@@ -58,6 +58,35 @@ ActiveRecord::Schema.define(version: 20140606113548) do
     t.integer  "semi_coverage_rate"
     t.integer  "production_coverage_rate"
     t.integer  "other_coverage_rate"
+  end
+
+  create_table "pipelines", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "office_id"
+    t.integer  "client_id"
+    t.integer  "software"
+    t.integer  "software_margin"
+    t.integer  "software_coverage_rate"
+    t.integer  "semi"
+    t.integer  "semi_margin"
+    t.integer  "semi_coverage_rate"
+    t.integer  "production"
+    t.integer  "production_margin"
+    t.integer  "production_coverage_rate"
+    t.integer  "ads"
+    t.integer  "ads_margin"
+    t.integer  "ads_coverage_rate"
+    t.integer  "other"
+    t.integer  "other_margin"
+    t.integer  "other_coverage_rate"
+    t.integer  "gross_sale"
+    t.integer  "margin"
+    t.integer  "probability"
+    t.datetime "est_closing"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "weighted_gross"
+    t.integer  "weighted_margin"
   end
 
   create_table "users", force: true do |t|
