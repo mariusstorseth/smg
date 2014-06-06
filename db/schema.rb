@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605213059) do
+ActiveRecord::Schema.define(version: 20140606113548) do
 
   create_table "clients", force: true do |t|
     t.string   "client_name"
@@ -59,5 +59,18 @@ ActiveRecord::Schema.define(version: 20140605213059) do
     t.integer  "production_coverage_rate"
     t.integer  "other_coverage_rate"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.integer  "office_id"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
 end
