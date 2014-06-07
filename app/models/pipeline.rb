@@ -3,10 +3,8 @@ class Pipeline < ActiveRecord::Base
   belongs_to :user
   belongs_to :office
 
-  before_create :calculate_coverage_ratios!
-
-  before_save :calculate_product_margins!, :calculate_gross_sale!,
-              :calculate_margin!, :calculate_weighted_values!
+  before_save :calculate_gross_sale!, :calculate_coverage_ratios!, 
+              :calculate_product_margins!, :calculate_margin!, :calculate_weighted_values!
 
   
   def calculate_coverage_ratios!
@@ -15,11 +13,10 @@ class Pipeline < ActiveRecord::Base
     self.production_coverage_rate ||= 50
     self.ads_coverage_rate ||= 15
     self.other_coverage_rate ||= 0
-    self.probability ||= 0
   end
 
   def calculate_product_margins!
-    if software 
+    if software
       self.software_margin = software * software_coverage_rate / 100
     else
       self.software_margin = nil

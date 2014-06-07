@@ -1,15 +1,26 @@
-<table>
+<div class="page-header">
+  <h1>Offices</h1>
+</div>
+<table class="table">
   <thead>
     <tr>
-      <td>Office</td>
-      <td>Country</td>
+      <th>Office</th>
+      <th>Budget</th>
+      <th>Margin</th>
+      <th>Reached</th>
+      <th>Wighted pipeline</th>
+      <th>Estimated margin</th>
+      <th>Estimated reach</th>
     </tr>
   </thead>
   <tbody>
     <% @offices.each do |office| %>
     <tr>
       <td><%= link_to office.office_name, office_path(office) %></td>
-      <td><%= office.country %></td>
+      <td>100 000</td>
+      <td><%= office.orders.sum(:margin) %></td>
+      <td><%= office.orders.sum(:gross_sale) %></td>
+      <td><%= office.pipelines.sum(:margin) %></td>
     </tr>
     <% end %>
   </tbody>

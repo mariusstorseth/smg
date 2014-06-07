@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h1><%= @order.client.client_name %></h1>
+</div>
+<table class="table table-condensed">
+  <thead>
+    <th>Client</th>
+    <th>Software</th>
+    <th>Software margin</th>
+    <th>Software cover</th>
+    <th>Semi</th>
+    <th>Semi margin</th>
+    <th>Semi cover</th>
+    <th>Production</th>
+    <th>Production margin</th>
+    <th>Production cover</th>
+    <th>Ads</th>
+    <th>Ads margin</th>
+    <th>Ads cover</th>
+    <th>Other</th>
+    <th>Other margin</th>
+    <th>Other cover</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Gross</th>
+    <th>Margin</th>
+  </thead>
+  <tbody>
+    <td><%= @order.client.client_name %></td>
+    <td style="background-color:yellow;"><%= @order.software %></td>
+    <td style="background-color:yellow;"><%= @order.software_margin %></td>
+    <td style="background-color:yellow;"><%= @order.software_coverage_rate %></td>
+    <td><%= @order.semi %></td>
+    <td><%= @order.semi_margin %></td>
+    <td><%= @order.semi_coverage_rate %></td>
+    <td style="background-color:yellow;"><%= @order.production %></td>
+    <td style="background-color:yellow;"><%= @order.production_margin %></td>
+    <td style="background-color:yellow;"><%= @order.production_coverage_rate %></td>
+    <td><%= @order.ads %></td>
+    <td><%= @order.ads_margin %></td>
+    <td><%= @order.ads_coverage_rate %></td>
+    <td style="background-color:yellow;"><%= @order.other %></td>
+    <td style="background-color:yellow;"><%= @order.other_margin %></td>
+    <td style="background-color:yellow;"><%= @order.other_coverage_rate %></td>
+    <td><%= @order.description %></td>
+    <td><%= @order.status %></td>
+    <td><%= @order.gross_sale %></td>
+    <td><%= @order.margin %></td>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_order_path(@order), :class => "btn btn-primary" %>

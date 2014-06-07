@@ -3,11 +3,13 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :office
 
-  before_create :calculate_coverage_ratios!
+  before_save :calculate_gross_sale!, :calculate_coverage_ratios!, 
+              :calculate_product_margins!, :calculate_margin!, :set_office
 
-  before_save :calculate_product_margins!, :calculate_gross_sale!, :calculate_margin!
+  def set_office
+    self.office = user.office
+  end
 
-  
   def calculate_coverage_ratios!
     self.software_coverage_rate ||= 80
     self.semi_coverage_rate ||= 70
@@ -17,7 +19,7 @@ class Order < ActiveRecord::Base
   end
 
   def calculate_product_margins!
-    if software 
+    if software
       self.software_margin = software * software_coverage_rate / 100
     else
       self.software_margin = nil

@@ -1,0 +1,42 @@
+<div class="page-header border-none">
+  <div class="row">
+    <div class="col-md-6">
+
+    </div>
+    <div class="col-md-6">
+      <%= link_to 'New sale', new_order_path, :class => "btn btn-primary pull-right" %>
+    </div>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Gross Sale</th>
+        <th>Margin</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.reverse_each do |order| %>
+        <tr>
+          <td><%= link_to order.client.client_name, client_path(order.client) %></td>
+          <td><%= number_to_currency(order.gross_sale, :unit => "", precision: 0, delimiter: " ") %></td>
+          <td><%= number_to_currency(order.margin, :unit => "", precision: 0, delimiter: " ") %></td>
+          <td><%= link_to order.created_at.to_date, order_path(order) %></td>
+          <td>
+            <% if order.status == "Declined" %>
+              <span class="label label-danger">Declined</span>
+            <% elsif order.status == "Approved" %>
+              <span class="label label-success">Approved</span>
+            <% else %>
+              <span class="label label-default">Waiting...</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

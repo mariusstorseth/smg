@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :offices
+  resources :orders
+  resources :pipelines
+  resources :users
+  resources :clients
+
+  root 'orders#index'
 
   # Example resource route with options:
   #   resources :products do
